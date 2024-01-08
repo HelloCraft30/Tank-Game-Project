@@ -28,6 +28,10 @@ void game::init() {
 	bedrock_texture.loadFromFile("png/bedrock.png");
 	m_bedrock.setSize({ 32,32 });
 	m_bedrock.setTexture(&bedrock_texture);
+	//------------------------------------------grass
+	grass_texture.loadFromFile("png/grass.png");
+	m_grass.setSize({ 32,32 });
+	m_grass.setTexture(&grass_texture);
 	//------------------------------------------bullet
 	m_bullet.setSize({ 8,8 });
 	m_bullet.setFillColor(sf::Color::Red);
@@ -276,6 +280,10 @@ void game::draw() {
 	for (int i = 0; i < eBullets.size(); i++) {
 		_window->draw(eBullets[i]);
 	}
+	//------------------------------------------grasses
+	for (int i = 0; i < grasses.size(); i++) {
+		_window->draw(grasses[i]);
+	}
 }
 
 void game::collision() {
@@ -456,9 +464,13 @@ void game::map_set_game() {
 			switch (mapData[i][j]) {
 			case 0:
 				break;
-			case 1:
+			case 1://bedrock
 				bedrocks.push_back(m_bedrock);
 				bedrocks[bedrocks.size() - 1].setPosition({ j * 32 + mapOffSet, i * 32 + mapOffSet });
+				break;
+			case 2://grass
+				grasses.push_back(m_grass);
+				grasses[grasses.size() - 1].setPosition({ j * 32 + mapOffSet, i * 32 + mapOffSet });
 				break;
 			case 7:
 				player.setPosition({ j * 32 + mapOffSet, i * 32 + mapOffSet });

@@ -85,6 +85,9 @@ public:
 	//------------------------------------------Block
 	//------------------------------------------Grass
 	std::vector<sf::RectangleShape> grasses;
+	sf::RectangleShape m_grass;
+	sf::Texture grass_texture;
+
 	//------------------------------------------Wall
 	std::vector<sf::RectangleShape> walls;
 	//------------------------------------------Bedrock
